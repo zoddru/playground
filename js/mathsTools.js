@@ -1,4 +1,5 @@
 const mathsTools = {
+
     toDigits: function(num) {
         const chars = num.toString().split('');
         const digits = chars.map(Number);
@@ -50,27 +51,4 @@ const mathsTools = {
 
 Object.freeze(mathsTools);
 
-let r = [];
-for (let i = 0; i < 3000000; i++) {
-    r.push(mathsTools.obfuscate(i));
-}
-
-//console.log(r);
-
-//r = [12, 123, 34, 1, 34, 12, 234, 2];
-const m = {};
-
-r.map((v, i) => { m[v] = (m[v] || []); m[v].push(i); });
-
-for (let num in m) {
-    if (m[num].length > 1)
-    console.log(num + ' : ' + m[num]);
-}
-
-console.log(mathsTools.restore(mathsTools.obfuscate(234634)));
-
-
-
-module.exports = {
-    mathsTools: mathsTools
-};
+module.exports = mathsTools;
