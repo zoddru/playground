@@ -1,0 +1,55 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Home</title>
+        <meta name="description" content="Home">
+        <meta name="author" content="Me">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin" />
+        <link rel="stylesheet" href="css/core.css?v=1.0">
+
+        <!--[if lt IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+        <![endif]-->
+
+        <script src="https://unpkg.com/vue"></script>
+        <script data-main="js/index.main" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
+        <script src="js/core.js"></script>
+    </head>
+    <body class="fullHeight">
+        <nav v-cloak v-highlight-selected="selected">
+            <a v-for="item in items" v-on:click="select(item)" class="item" v-bind:class="{ selected: item === selected }" href="#">
+                <b>{{ item.label }}</b>
+            </a>
+        </nav>
+
+        <header>
+            <h1>Playground</h1>
+
+            <div class="options">
+                <button class="task">Add task</button>
+                <button class="track">Track</button>
+                <button class="primary">Primary</button>
+                <button class="secondary">Secondary</button>
+                <button class="basic">Basic</button>
+            </div>
+        </header>
+
+        <div id="main">
+
+            <section id="tasks" v-cloak>
+
+                <ul class="tasks">
+                    <li v-for="task in tasks">
+                        {{ task.description }}
+                    </li>
+                </ul>
+
+            </section>
+
+        </div>
+    </body>
+</html>

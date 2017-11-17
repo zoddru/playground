@@ -1,0 +1,25 @@
+[
+    {
+        "name": "Hot Rod",
+        "faction": "Autobot"
+    },
+    {
+        "name": "Blurr",
+        "faction": "Autobot"
+    },
+    {
+        "name": "Bumblebee",
+        "faction": "Autobot"
+    },
+    {
+        "name": "Triggerhappy",
+        "faction": "Decepticon"
+    },
+    {
+        "name": "Weirdwolf",
+        "faction": "Decepticon",
+        "alternativeNames": [
+            "Wolfwire"
+        ]
+    }
+]
