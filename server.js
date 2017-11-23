@@ -19,16 +19,26 @@ app.get('/', (request, response) => response.sendFile('index.html', { root: __di
         code: req.params.code,
         number: mathsTools.restore(req.params.code)
     }))
+    
+    .get('/urls/nextId', async (req, res) => {
+        res.json(await data.url.nextId());
+    })
 
-    .get('/url', async (req, res) => {
-        res.json(await data.url.getAll());
+    .get('/urls', async (req, res) => {
+
+        if (req.query.url) {
+            res.json(await data.url.findByUrl(req.query.url));
+            return;
+        }
+
+        res.json(await data.url.findAll());
     })
     
-    .get('/url/save/:url', async (req, res) => {
+    .get('/urls/save/:url', async (req, res) => {
         res.json(await data.url.put(req.params.url));
     })
 
-    .get('/url/:code', async (req, res) => {
+    .get('/urls/:code', async (req, res) => {
         res.json(await data.url.get(req.params.code));
     })
 
