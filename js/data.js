@@ -1,6 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 const connectionString = 'mongodb://admin:ninjalemonTEA31@playground-shard-00-00-jlue1.mongodb.net:27017,playground-shard-00-01-jlue1.mongodb.net:27017,playground-shard-00-02-jlue1.mongodb.net:27017/test?ssl=true&replicaSet=Playground-shard-0&authSource=admin';
-
+const mathsTools = require('./mathsTools.js');
 
 function connectAndExecute(toExecute) {
     return new Promise((resolve, reject) => {
@@ -14,7 +14,6 @@ function connectAndExecute(toExecute) {
         });
     });
 }
-
 
 const data = {
 
@@ -89,36 +88,38 @@ const data = {
             });
         },
 
-        put: async function (url) {
-            //const found = await findOne({ url: code });
+        save: async function (url) {
+            const found = await this.findByUrl(url);
 
-            //if (!!found)
-            //    return found;
+            if (!!found)
+                return found;
 
-            return new Promise((resolve, reject) => {
-                MongoClient.connect(connectionString, function (err, db) {
-                    if (err)
-                        throw err;
+            const nextId = await this.nextId();
 
-                    const item = {
-                        url: url
-                    };
+            const code = mathsTools.obfuscate(nextId.seq);
 
-                    db.collection('urls')
-                        .insertOne(item, function (err, result) {
-                            if (err)
-                                throw err;
+            return connectAndExecute((db, resolve, reject) => {
+                db.collection('urls').findAndModify(
+                    { url: 'url' },
+                    [['_id', 'asc']],
+                    { code: code, url: url },
+                    { new: true, upsert : true },
+                    (err, result) => {
+                        db.close();
 
-                            db.close();
+                        if (err) {
+                            reject(err);
+                            return;
+                        }
 
-                            resolve(result);
-                        });
-                });
+                        if (!result.ok) {
+                            reject(result.lastErrorObject);
+                            return;
+                        }
+
+                        resolve(result.value);
+                    });
             });
-        },
-
-        get: function (code) {
-            return findOne({ _id: code });
         }
     }
 };

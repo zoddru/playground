@@ -1,0 +1,6 @@
+mongo "mongodb://playground-shard-00-00-jlue1.mongodb.net:27017,playground-shard-00-01-jlue1.mongodb.net:27017,playground-shard-00-02-jlue1.mongodb.net:27017/test?replicaSet=Playground-shard-0" --authenticationDatabase admin --ssl --username admin --password ninjalemonTEA31
+
+db.counters.find();
+
+db.counters.findAndModify({ query: { _id: "urls" }, update: { $inc: { seq: 1 } }, new: true });
+

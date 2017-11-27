@@ -1,0 +1,34 @@
+body {
+    background-image: url('/img/bg3.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+section {
+    position: absolute;
+    top:50%;
+    left:50%;
+
+    transform: translate(-50%,-50%);
+
+    border: solid 1px red;
+
+    height: 8rem;
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+input[type=url] {
+    width: 40rem;
+}
+
+button[type=submit] {
+    float: right;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}

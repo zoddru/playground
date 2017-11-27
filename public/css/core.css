@@ -164,10 +164,6 @@ body > nav a.selected {
     color: #fff;
 }
 
-body > nav > a {
-
-}
-
 body > nav > div.selection {    
     padding-left: 1rem;
     border-left: 0.6rem solid #2185d0;
@@ -230,4 +226,11 @@ ul.tasks li {
     padding-bottom: 2rem;
     border-bottom: solid 1px #E0E1E2;
     margin-bottom: 2rem;
+}
+
+input[type=url] {
+    line-height: 2rem;
+    padding: 0.78571429rem 1.5rem 0.78571429rem;
+    vertical-align: top;
+    border: none;
 }
