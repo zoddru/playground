@@ -20,13 +20,13 @@
     </head>
 
     <body>
-        <section>
-            <form>
-                <input type="url" id="url" />
-                <button type="submit" class="secondary">shorten</button>
+        <section id="shortener">
+            <form novalidate>
+                <input type="url" id="url" v-model="url" />
+                <button type="submit" class="secondary" v-on:click="shorten">shorten</button>
             </form>
             <div class="result">
-                <a href="" id="shortened"></a>
+                <a href="" id="shortUrl">{{shortUrl}}</a>
             </div>
         </section>
     </body>

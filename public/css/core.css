@@ -229,6 +229,8 @@ ul.tasks li {
 }
 
 input[type=url] {
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    
     line-height: 2rem;
     padding: 0.78571429rem 1.5rem 0.78571429rem;
     vertical-align: top;

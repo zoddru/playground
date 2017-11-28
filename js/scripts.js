@@ -1,2 +1,3 @@
-require('./module1.js');
-require('./module2.js');
+const shortnerModel = require('./shortenerModel.js');
+
+var shortnerApp = new Vue(shortnerModel);
